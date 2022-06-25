@@ -1,5 +1,6 @@
 package com.artcode.controller;
 
+import com.artcode.util.ApiResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class TestController {
 
     @RequestMapping(value = "/test")
-    public Object test() {
-        return "github有个大bug";
+    public ApiResponse test() {
+        return ApiResponse.successOfMessage("github有个大bug");
     }
 }
