@@ -1,4 +1,4 @@
-package com.artcode.util;
+package com.artCode.util;
 
 
 import java.io.Serializable;
@@ -66,19 +66,23 @@ public class ApiResponse<T> implements Serializable {
         this.data = data;
     }
 
+    public T getLcdata() {
+        return lcdata;
+    }
+    public void setLcdata(T lcdata) {
+        this.lcdata = lcdata;
+    }
+
 
     /***
-     * 成功-默认返回信息
-     * @return
+     * 成功-返回默认信息
      */
     public static ApiResponse<?> success() {
     	return create(Status.SUCCESS);
     }
 
     /***
-     *
-     * @param type
-     * @return
+     *  新增或修改返回结果
      */
     public static ApiResponse<?> saveSuccess(String type) {
 
@@ -91,14 +95,23 @@ public class ApiResponse<T> implements Serializable {
 	   	}
     }
 
+    /***
+     * 操作成功，并返回提示信息
+     */
     public static ApiResponse<?> successOfMessage(String msg) {
     	return create(Status.SUCCESS.getCode(), msg);
     }
 
+    /***
+     * 操作成功，并返回数据
+     */
     public static <T> ApiResponse<T> successOfData(T data) {
         return new ApiResponse<>(Status.SUCCESS.getCode(), Status.SUCCESS.getMsg(), data);
     }
 
+    /***
+     *操作成功，根据操作类型并返回数据（新增或修改）
+     */
     public static <T> ApiResponse<T> successOfTypeData(T data,String type) {
     	if("add".equals(type)) {
     		 return new ApiResponse<>(Status.SUCCESS.getCode(), Status.SAVESUCCESS.getMsg(), data);
@@ -107,15 +120,25 @@ public class ApiResponse<T> implements Serializable {
     	}else {
     		 return new ApiResponse<>(Status.SUCCESS.getCode(), Status.SUCCESS.getMsg(), data);
     	}
-
     }
+
+    /***
+     *返回两个不同的结果集
+     */
     public static <T> ApiResponse<T> successOfLcData(T data,T lcdata) {
         return new ApiResponse<>(Status.SUCCESS.getCode(), Status.SUCCESS.getMsg(), data,lcdata);
     }
+
+    /***
+     * 提示报错，返回默认错误提示信息
+     */
     public static ApiResponse<?> fail() {
         return create(Status.INTERNAL_SERVER_ERROR);
     }
 
+    /***
+     * 提示报错，并返回自定义错误提示
+     */
     public static ApiResponse<?> failOfMessage(String msg) {
         return create(Status.INTERNAL_SERVER_ERROR.getCode(), msg);
     }
@@ -124,18 +147,30 @@ public class ApiResponse<T> implements Serializable {
         return create(Status.INTERNAL_SERVER_ERROR.getCode(), msg, data);
     }
 
+    /***
+     * 提交参数有误
+     */
     public static ApiResponse<?> notValidParam() {
         return create(Status.NOT_VALID_PARAM);
     }
 
+    /***
+     * 提示权限不足，拒绝访问
+     */
     public static ApiResponse<?> forbidden() {
         return create(Status.FORBIDDEN);
     }
 
+    /***
+     * 提示资源找不到（404）
+     */
     public static ApiResponse<?> notFound() {
         return create(Status.NOT_FOUND);
     }
 
+    /***
+     * 提示未登录（401）
+     */
     public static ApiResponse<?> notLogin() {
         return create(Status.NOT_LOGIN);
     }
@@ -151,11 +186,5 @@ public class ApiResponse<T> implements Serializable {
     private static ApiResponse<?> create(Status status) {
         return create(status.getCode(), status.getMsg());
     }
-	public T getLcdata() {
-		return lcdata;
-	}
-	public void setLcdata(T lcdata) {
-		this.lcdata = lcdata;
-	}
 
 }

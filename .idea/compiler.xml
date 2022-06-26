@@ -9,7 +9,6 @@
         <outputRelativeToContentRoot value="true" />
         <module name="artCode-web" />
         <module name="artCode-common" />
-        <module name="artCode" />
       </profile>
     </annotationProcessing>
   </component>

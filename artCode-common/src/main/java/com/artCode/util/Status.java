@@ -1,9 +1,8 @@
-package com.artcode.util;
+package com.artCode.util;
 
 /**
  * 功能描述: 统一 Response 状态码
- *
- * @author hxulin
+ * @author mhqf
  */
 public enum Status {
 

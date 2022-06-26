@@ -1,4 +1,4 @@
-package com.artcode.artcodeweb;
+package com.artCode.artcodeweb;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -7,13 +7,18 @@
     <groupId>org.artCode</groupId>
     <artifactId>artCode</artifactId>
     <version>1.0</version>
-    <name>it-dog</name>
-    <description>dog-code</description>
+    <name>artCode</name>
+    <description>art-code</description>
     <packaging>pom</packaging>
-    
+
     <modules>
         <module>artCode-common</module>
         <module>artCode-web</module>
     </modules>
 
+    <build>
+        <plugins>
+
+        </plugins>
+    </build>
 </project>

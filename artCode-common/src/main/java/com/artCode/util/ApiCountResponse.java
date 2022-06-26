@@ -1,4 +1,4 @@
-package com.artcode.util;
+package com.artCode.util;
 
 import lombok.Data;
 

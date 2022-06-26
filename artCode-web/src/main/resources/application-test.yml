@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: mhqf123
+    url: jdbc:mysql://localhost:3306/artCode?characterEncoding=utf8&useSSL=false&serverTimezone=Hongkong&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true
+    name: artCode
+    druid:
+      filters: stat
+      max-active: 1000
+      initial-size: 50
+      max-wait: 60000
+      min-idle: 100
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      validation-query: select 1 from sysibm.sysdummy1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: false
+      max-open-prepared-statements: 20
+      #druid监控配置
+      stat-view-servlet.enabled: true
+      web-stat-filter.url-pattern: /druid/*

@@ -1,4 +1,4 @@
-package com.artcode;
+package com.artCode;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

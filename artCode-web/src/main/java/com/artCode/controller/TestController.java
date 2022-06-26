@@ -1,6 +1,6 @@
-package com.artcode.controller;
+package com.artCode.controller;
 
-import com.artcode.util.ApiResponse;
+import com.artCode.util.ApiResponse;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 

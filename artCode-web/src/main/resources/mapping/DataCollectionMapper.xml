@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.artCode.dao.DataCollectionMapper">
+  <resultMap id="BaseResultMap" type="com.artCode.entity.DataCollection">
+    <id column="OID" jdbcType="VARCHAR" property="oid" />
+    <result column="collection_name" jdbcType="VARCHAR" property="collectionName" />
+    <result column="is_release" jdbcType="INTEGER" property="isRelease" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="is_delete" jdbcType="INTEGER" property="isDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    OID, collection_name, is_release, create_date, is_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from data_collection
+    where OID = #{oid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from data_collection
+    where OID = #{oid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.artCode.entity.DataCollection">
+    insert into data_collection (OID, collection_name, is_release, 
+      create_date, is_delete)
+    values (#{oid,jdbcType=VARCHAR}, #{collectionName,jdbcType=VARCHAR}, #{isRelease,jdbcType=INTEGER}, 
+      #{createDate,jdbcType=TIMESTAMP}, #{isDelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.artCode.entity.DataCollection">
+    insert into data_collection
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        OID,
+      </if>
+      <if test="collectionName != null">
+        collection_name,
+      </if>
+      <if test="isRelease != null">
+        is_release,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="oid != null">
+        #{oid,jdbcType=VARCHAR},
+      </if>
+      <if test="collectionName != null">
+        #{collectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="isRelease != null">
+        #{isRelease,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.artCode.entity.DataCollection">
+    update data_collection
+    <set>
+      <if test="collectionName != null">
+        collection_name = #{collectionName,jdbcType=VARCHAR},
+      </if>
+      <if test="isRelease != null">
+        is_release = #{isRelease,jdbcType=INTEGER},
+      </if>
+      <if test="createDate != null">
+        create_date = #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where OID = #{oid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.artCode.entity.DataCollection">
+    update data_collection
+    set collection_name = #{collectionName,jdbcType=VARCHAR},
+      is_release = #{isRelease,jdbcType=INTEGER},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      is_delete = #{isDelete,jdbcType=INTEGER}
+    where OID = #{oid,jdbcType=VARCHAR}
+  </update>
+</mapper>
