@@ -7,10 +7,13 @@
     <groupId>org.artCode</groupId>
     <artifactId>artCode</artifactId>
     <version>1.0</version>
-
-    <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
-    </properties>
+    <name>it-dog</name>
+    <description>dog-code</description>
+    <packaging>pom</packaging>
+    
+    <modules>
+        <module>artCode-common</module>
+        <module>artCode-web</module>
+    </modules>
 
 </project>
